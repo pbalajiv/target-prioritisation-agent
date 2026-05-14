@@ -6,7 +6,7 @@ An AI agent that automates the early stages of drug target identification. Given
 
 Target identification in pharma typically involves a scientist manually pulling data from OpenTargets, checking tissue expression in GTEx, reading relevant literature, and mentally integrating all of it into a shortlist. This project automates that workflow using an LLM-based agent that can decide which databases to query, interpret the results, and produce a reasoned assessment — the same loop a translational scientist runs, but faster and more systematic.
 
-The key distinction from a simple script is that the agent **reasons about what to do next** based on what it finds. If a top-scoring target from OpenTargets turns out to have ubiquitous expression (a safety concern), the agent notes that and adjusts its ranking. The sequence of queries isn't hardcoded — it adapts.
+The key distinction from a simple script is that the agent **reasons about what to do next** based on what it finds. If a top-scoring target from OpenTargets turns out to have ubiquitous expression (a safety concern), the agent notes that and adjusts its ranking. The sequence of queries isn't hardcoded and the system adapts.
 
 ## Architecture
 
@@ -109,11 +109,13 @@ The agent typically identifies targets like FLT3, IDH1/2, NPM1, and KIT, noting 
 
 ## Limitations
 
-- The agent's reasoning quality depends on the LLM — it can occasionally miss nuances a domain expert would catch.
+- The agent's reasoning quality depends on the LLM, and so it can occasionally miss nuances a domain expert would catch.
 - OpenTargets scores aggregate heterogeneous evidence; the agent interprets these but doesn't critically evaluate the underlying study quality.
-- GTEx expression data comes from healthy donors, not diseased tissue — expression may differ in disease states.
+- GTEx expression data comes from healthy donors and not diseased tissue. Therefore expression may differ in disease states.
 - This is a hypothesis generation tool, not a replacement for experimental validation.
 
 ## Scientific context
 
-This project demonstrates **agentic AI for hypothesis generation** in translational science. The agent pattern (LLM + tool use + iterative reasoning) is applicable to many pharma workflows where a scientist currently integrates evidence from multiple databases manually. The approach is transparent — the agent shows its reasoning chain, making it auditable.
+This project demonstrates **agentic AI for hypothesis generation** in translational science. The agent pattern (LLM + tool use + iterative reasoning) is applicable to many pharma workflows where a scientist currently integrates evidence from multiple databases manually. The approach is transparent and the agent shows its reasoning chain, making it auditable.
+
+This is a work in progress and will be updated regularly as more advances are made.
